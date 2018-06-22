@@ -4,6 +4,11 @@ import './App.css';
 import SimpleMap from './Map.js'
 
 class App extends Component {
+  // Change title to app
+  componentDidMount(){
+    document.title = "Architecture in Madrid"
+  }
+
   render() {
     return (
 
