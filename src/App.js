@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import marker from './marker.png';
 import './App.css';
 import SimpleMap from './Map.js'
 
@@ -9,7 +9,7 @@ class App extends Component {
 
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          <img src={marker} className="App-logo" alt="logo" />
           <h1 className="App-title">Architecure in Madrid</h1>
         </header>
         <SimpleMap />
