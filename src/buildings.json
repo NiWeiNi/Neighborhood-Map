@@ -5,12 +5,16 @@
         "position": [40.496251, -3.593332],
       },
       {
-        "name": "Banco de bilbao Tower",
+        "name": "Banco de Bilbao Tower",
         "location": [40.447974, -3.691719]
       },
       {
         "name": "Fernando Higueras House and Studio",
         "location": [40.464608, -3.671434]
+      },
+      {
+        "name": "Reina Sofia Art Museum",
+        "location": [40.408790, -3.694479]
       }
     ]
-  }
+}
