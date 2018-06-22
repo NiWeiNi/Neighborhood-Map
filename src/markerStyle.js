@@ -1,5 +1,5 @@
-const K_WIDTH = 40;
-const K_HEIGHT = 40;
+const K_WIDTH = 30;
+const K_HEIGHT = 30;
 
 const markerStyle = {
   // initially any map object has left top corner at lat lng coordinates
@@ -9,11 +9,11 @@ const markerStyle = {
   left: -K_WIDTH / 2,
   top: -K_HEIGHT / 2,
 
-  border: '5px solid #f44336',
+  border: '7px solid #793236',
   borderRadius: K_HEIGHT,
   backgroundColor: 'white',
   textAlign: 'center',
-  color: '#3f51b5',
+  color: '#793236',
   fontSize: 16,
   fontWeight: 'bold',
   padding: 4
