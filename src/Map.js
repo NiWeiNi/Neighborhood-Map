@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
+import myData from './data/buildings.json';
 
 // Import styles
 import Marker from './Marker.js'
@@ -11,39 +12,27 @@ class SimpleMap extends Component {
         lat: 40.415363,
         lng: -3.707398
     },
-    zoom: 14    
+    zoom: 13    
   };
  
   render() {
     return (
       // Set the container height explicitly
-      <div style={{ height: 'calc(100vh - 80px)', width: '100%' }}>
+      <div style={{ height: 'calc(100vh - 80px)', width: '80%' }}>
         <GoogleMapReact
             bootstrapURLKeys={{ key: 'AIzaSyCfY3HXBDwnMmSYZD9vzl8dTs1shDnXj6c' }}
             defaultCenter={this.props.center}
             defaultZoom={this.props.zoom}
             options={mapStyle}
         >
-            <Marker
-                lat={40.415363}
-                lng={-3.707398}
-            />
-            <Marker
-                lat={40.496251}
-                lng={-3.593332}
-            />
-            <Marker
-                lat={40.447974}
-                lng={-3.691719}
-            />
-            <Marker
-                lat={40.464608}
-                lng={-3.671434}
-            />
-             <Marker
-                lat={40.408790}
-                lng={-3.694479}
-            />
+            { myData.markers.map(marker =>
+                <Marker 
+                    lat={marker.location[0]}
+                    lng={marker.location[1]}
+                />
+            )
+
+            }
         </GoogleMapReact>
       </div>
     );
