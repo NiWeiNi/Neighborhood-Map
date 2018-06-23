@@ -1,0 +1,29 @@
+{
+  "markers": [
+    {
+      "name": "Barajas Airport Terminal 4",
+      "location": [40.496251, -3.593332],
+      "id": 1
+    },
+    {
+      "name": "Banco de Bilbao Tower",
+      "location": [40.447974, -3.691719],
+      "id": 2
+    },
+    {
+      "name": "Fernando Higueras House and Studio",
+      "location": [40.464608, -3.671434],
+      "id": 3
+    },
+    {
+      "name": "Reina Sofia Art Museum",
+      "location": [40.408790, -3.694479],
+      "id": 4
+    },
+    {
+      "name": "Repsol Headquarters",
+      "location": [40.397920, -3.684392],
+      "id": 5
+    }
+  ]
+}
