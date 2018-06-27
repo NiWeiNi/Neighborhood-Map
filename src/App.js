@@ -21,7 +21,7 @@ class App extends Component {
         </header>
         <MyMapComponent 
           isMarkerShown
-          googleMapURL="https://maps.googleapis.com/maps/api/js?&v=3.exp&libraries=geometry,drawing,places"
+          googleMapURL="https://maps.googleapis.com/maps/api/js?&key=AIzaSyCfY3HXBDwnMmSYZD9vzl8dTs1shDnXj6c&v=3.exp&libraries=geometry,drawing,places"
           loadingElement={<div style={{ height: `100%` }} />}
           containerElement={<div style={{ height: `calc(100vh - 80px)` }} />}
           mapElement={<div style={{ height: `100%` }} />}
