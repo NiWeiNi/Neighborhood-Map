@@ -26,7 +26,8 @@ class SimpleMap extends Component {
             options={mapStyle}
         >
             { myData.markers.map(marker =>
-                <Marker 
+                <Marker
+                    key={marker.id}
                     lat={marker.location[0]}
                     lng={marker.location[1]}
                 />
