@@ -3,17 +3,19 @@ import scriptLoader from 'react-async-script-loader';
 import marker from './marker.png';
 import './App.css';
 import { mapStyle } from './components/mapStyle.js'
+import placesData from './data/buildings.json'
 
 
 class App extends Component {
 
   state = {
     map: {},
+    places: placesData.markers
   }
 
   // Change title to app
   componentDidMount(){
-    document.title = "Architecture in Madrid"
+    document.title = "Architecture in Madrid";
   }
 
   componentWillReceiveProps() {
