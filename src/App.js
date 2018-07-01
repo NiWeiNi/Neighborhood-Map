@@ -4,31 +4,10 @@ import marker from './marker.png';
 import './App.css';
 import { mapStyle } from './components/mapStyle.js'
 import placesData from './data/buildings.json'
+import ListView from './components/listView.js'
 
 
 class App extends Component {
-
-  state = {
-    map: {},
-    places: placesData.markers
-  }
-
-  // Change title to app
-  componentDidMount(){
-    document.title = "Architecture in Madrid";
-  }
-
-  componentWillReceiveProps() {
-    const map = new window.google.maps.Map(document.getElementById("map"), {
-      zoom: 13,
-      center: {lat: 40.415363, lng: -3.707398},
-      styles: mapStyle.styles
-    });
-
-    this.setState({
-      map: map
-    })
-  }
 
   render() {
     const style = {
@@ -50,6 +29,4 @@ class App extends Component {
   }
 }
 
-export default scriptLoader(
-  ["https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg"]
-)(App);
+export default App;
