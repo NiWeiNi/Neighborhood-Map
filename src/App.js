@@ -14,6 +14,13 @@ class App extends Component {
 
   state = {
     places: dataPlaces.markers,
+    openInfoWindow: false
+  }
+
+  clickOpenInfoWIndow = () => {
+    this.setState({
+      openInfoWindow: true
+    })
   }
 
   render() {
@@ -32,6 +39,8 @@ class App extends Component {
             containerElement={<div style={{ height: 'calc(100vh - 80px)', width: '80%'}} />}
             mapElement={<div style={{ height: '100%' }} />}
             dataPlaces={this.state.places}
+            openInfoWindow={this.state.openInfoWindow}
+            onOpenInfoWindow={this.openInfoWindow}
           />
         </div>
       </div>

@@ -19,14 +19,14 @@ const Map = withScriptjs(withGoogleMap(props => {
                     position={place.location}
                     key={place.id}
                 >
-                    {<InfoWindow>
-                        <div className="infowindow">
-                            <div className="place-name">{place.name}</div>
-                            <div className="place-direction"></div>
-                            <div className="place-image"></div>
-                        </div>
-                    </InfoWindow>}
-
+                    {props.openInfoWindow &&
+                        <InfoWindow>
+                            <div className="infowindow">
+                                <div className="place-name">{place.name}</div>
+                                <div className="place-direction"></div>
+                                <div className="place-image"></div>
+                            </div>
+                        </InfoWindow>}
                 </Marker>
             ))}
 
