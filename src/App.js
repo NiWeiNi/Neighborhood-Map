@@ -1,10 +1,20 @@
 import React, { Component } from 'react';
-import marker from './marker.png';
+
+// Import styles
 import './App.css';
+import markerLogo from './img/marker.png'
+
+// Import data
+import dataPlaces from './data/buildings.json'
+
+// Import components
 import Map from './components/Map.js'
 
-
 class App extends Component {
+
+  state = {
+    places: dataPlaces.markers,
+  }
 
   render() {
     
@@ -12,7 +22,7 @@ class App extends Component {
 
       <div className="App">
         <header className="App-header">
-          <img src={marker} className="App-logo" alt="logo" />
+          <img src={markerLogo} className="App-logo" alt="logo" />
           <h1 className="App-title">Architecure in Madrid</h1>
         </header>
         <div className="map-container">
@@ -21,6 +31,7 @@ class App extends Component {
             loadingElement={<div style={{ height: '100%' }} />}
             containerElement={<div style={{ height: 'calc(100vh - 80px)', width: '80%'}} />}
             mapElement={<div style={{ height: '100%' }} />}
+            dataPlaces={this.state.places}
           />
         </div>
       </div>
