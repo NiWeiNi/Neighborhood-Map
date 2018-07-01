@@ -1,19 +1,13 @@
 import React, { Component } from 'react';
-import scriptLoader from 'react-async-script-loader';
 import marker from './marker.png';
 import './App.css';
-import { mapStyle } from './components/mapStyle.js'
-import placesData from './data/buildings.json'
-import ListView from './components/listView.js'
+import Map from './components/Map.js'
 
 
 class App extends Component {
 
   render() {
-    const style = {
-      width: '100vw',
-      height: 'calc(100vh - 80px)'
-    }
+    
     return (
 
       <div className="App">
@@ -21,7 +15,13 @@ class App extends Component {
           <img src={marker} className="App-logo" alt="logo" />
           <h1 className="App-title">Architecure in Madrid</h1>
         </header>
-        <div id="map" style={style} role="application">
+        <div className="map-container">
+          <Map
+            googleMapURL= "https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg&v=3.exp&libraries=geometry,drawing,places"
+            loadingElement={<div style={{ height: '100%' }} />}
+            containerElement={<div style={{ height: 'calc(100vh - 80px)', width: '80%'}} />}
+            mapElement={<div style={{ height: '100%' }} />}
+          />
         </div>
       </div>
  
