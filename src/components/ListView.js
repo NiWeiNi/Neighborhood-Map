@@ -11,10 +11,10 @@ class ListView extends Component {
         this.setState({
             query: query.trim()
         })
-        this.updateListOfPlaces(query)
+        this.updatePlaces(this.state.query)
     }
 
-    updateListOfPlaces = (query) => {
+    updatePlaces = (query) => {
         // Check if search term match something in places
         if (query) {
             const match = new RegExp(escapeRegExp(query), 'i');
@@ -25,6 +25,7 @@ class ListView extends Component {
     }
     
     render() {
+        console.log(this.props.filteredPlaces)
         return (
             <div className="list-view">
                 <input

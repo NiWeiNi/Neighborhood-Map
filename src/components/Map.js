@@ -11,7 +11,7 @@ const Map = withScriptjs(withGoogleMap(props => {
     return (
         <GoogleMap
             defaultCenter={{lat: 40.415363, lng: -3.707398}}
-            defaultZoom={13}
+            defaultZoom={12}
             defaultOptions={{styles: mapStyle.styles}}
         >
             {props.filteredPlaces.map(place => (

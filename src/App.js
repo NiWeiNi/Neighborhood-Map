@@ -15,7 +15,7 @@ class App extends Component {
 
   state = {
     places: dataPlaces.markers,
-    filteredPlaces: [],
+    filteredPlaces: dataPlaces.markers,
     openInfoWindow: false,
     infoWindowPlace: '',
   }

@@ -1,11 +1,25 @@
+:root {
+  --scarlet: #793236;
+}
+
+html {
+  box-sizing: border-box;
+  font-family: Montserrat, Verdana, Tahoma, Sans-Serif;
+  font-weight: normal;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit; 
+}
+
 .App {
   text-align: center;
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 2s ease;
-  height: 50px;
-  padding: 10px;
+  /* animation: App-logo-spin infinite 2s ease; */
+  height: 40px;
+  margin: 10px;
 }
 
 .App-header {
@@ -46,6 +60,26 @@
 }
 
 #filter {
-  width: 80%;
-  height: 20px;
+  font-size: 16px;
+  height: 30px;
+  margin-top: 20px;
+  padding: 5px;
+  width: calc(100% - 60px);
+}
+
+.filtered-list {
+  color: white;
+  font-size: 16px;
+  list-style: none;
+  padding: 0;
+  text-align: left;
+}
+
+.li-place {
+  padding: 15px 30px;
+}
+
+.li-place:hover {
+  background-color: rgb(94, 94, 94);
+  cursor: pointer;
 }
