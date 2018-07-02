@@ -18,9 +18,12 @@ const Map = withScriptjs(withGoogleMap(props => {
                 <Marker
                     position={place.location}
                     key={place.id}
+                    onClick={() => props.clickOpenInfoWindow(place.id)}
                 >
-                    {props.openInfoWindow &&
-                        <InfoWindow>
+                    {props.openInfoWindow && place.id === props.currentPlace &&
+                        <InfoWindow
+                            onCloseClick={() => props.clickCloseInfoWindow()}
+                        >
                             <div className="infowindow">
                                 <div className="place-name">{place.name}</div>
                                 <div className="place-direction"></div>

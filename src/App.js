@@ -15,12 +15,20 @@ class App extends Component {
 
   state = {
     places: dataPlaces.markers,
-    openInfoWindow: false
+    openInfoWindow: false,
+    infoWindowPlace: '',
   }
 
-  clickOpenInfoWIndow = () => {
+  clickOpenInfoWindow = (id) => {
     this.setState({
-      openInfoWindow: true
+      openInfoWindow: true,
+      infoWindowPlace: id
+    })
+  }
+
+  clickCloseInfoWindow = () => {
+    this.setState({
+      openInfoWindow: false
     })
   }
 
@@ -46,7 +54,9 @@ class App extends Component {
                 mapElement={<div style={{ height: '100%' }} />}
                 dataPlaces={this.state.places}
                 openInfoWindow={this.state.openInfoWindow}
-                onOpenInfoWindow={this.openInfoWindow}
+                clickOpenInfoWindow={this.clickOpenInfoWindow}
+                clickCloseInfoWindow={this.clickCloseInfoWindow}
+                currentPlace={this.state.infoWindowPlace}
               />
             </div>
           </div>
