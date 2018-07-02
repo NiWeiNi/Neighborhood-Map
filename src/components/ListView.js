@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import escapeRegExp from 'escape-string-regexp'
+import sortBy from 'sort-by'
 
 class ListView extends Component {
 
@@ -26,6 +27,9 @@ class ListView extends Component {
     
     render() {
         console.log(this.props.filteredPlaces)
+        // Sort places by name
+        this.props.filteredPlaces.sort(sortBy('name'))
+
         return (
             <div className="list-view">
                 <input
