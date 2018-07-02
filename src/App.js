@@ -15,6 +15,7 @@ class App extends Component {
 
   state = {
     places: dataPlaces.markers,
+    filteredPlaces: [],
     openInfoWindow: false,
     infoWindowPlace: '',
   }
@@ -32,6 +33,12 @@ class App extends Component {
     })
   }
 
+  updateListOfPlaces = (results) => {
+    this.setState({
+      filteredPlaces: results
+    })
+  }
+
   render() {
     
     return (
@@ -44,6 +51,10 @@ class App extends Component {
         <div className="main-content">
             <div className="view-list">
               <ListView
+                places={this.state.places}
+                filteredPlaces={this.state.filteredPlaces}
+                clickOpenInfoWindow={this.clickOpenInfoWindow}
+                updateListOfPlaces={this.updateListOfPlaces}
               />
             </div>
             <div className="map-container">
@@ -52,7 +63,7 @@ class App extends Component {
                 loadingElement={<div style={{ height: '100%' }} />}
                 containerElement={<div style={{ height: 'calc(100vh - 80px)'}} />}
                 mapElement={<div style={{ height: '100%' }} />}
-                dataPlaces={this.state.places}
+                filteredPlaces={this.state.filteredPlaces}
                 openInfoWindow={this.state.openInfoWindow}
                 clickOpenInfoWindow={this.clickOpenInfoWindow}
                 clickCloseInfoWindow={this.clickCloseInfoWindow}

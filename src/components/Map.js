@@ -14,7 +14,7 @@ const Map = withScriptjs(withGoogleMap(props => {
             defaultZoom={13}
             defaultOptions={{styles: mapStyle.styles}}
         >
-            {props.dataPlaces.map(place => (
+            {props.filteredPlaces.map(place => (
                 <Marker
                     position={place.location}
                     key={place.id}
