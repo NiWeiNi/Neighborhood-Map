@@ -36,6 +36,7 @@ class ListView extends Component {
                     type="text"
                     id="filter"
                     placeholder="Filter by name"
+                    onChange={event => this.updateSearch(event.target.value)}
                 />
                 {this.props.filteredPlaces && 
                     <ul className="filtered-list">
