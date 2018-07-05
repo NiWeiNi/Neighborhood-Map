@@ -14,21 +14,16 @@ import ListView from './components/ListView';
 // Access to foursquare API
 var foursquare = require('react-foursquare')({
   clientID: 'SUD01OL3D3SNAY2F24URWTTZQVXTGQFD3GV40ASTZDATLQLO',
-  clientSecret: 'XAPJ4WFMBJELMWUTGEDOWDHP35QSZL1E43ANJC42HWTXNSFI'  
+  clientSecret: 'VXI1IVXQMQLVO2GLMBXAZUGKN3HKILW0FZANH1JDZXDRSUQG'  
 });
 
-// var params = {
-//   'll': '40.496251, -3.593332',
-//   'query': 'Barajas Airport',
-//   'limit': '1'
-// };
-
+// Places to render with venue_id
 var params = [
   {'venue_id': "4afde737f964a520e72b22e3"},
-  {'venue_id': "4b74fd33f964a5204cfa2de3"},
-  {'venue_id': "4b4ddd13f964a520b6d926e3"},
-  {'venue_id': "4da6dab08154fe28a8d91eb3"},
-  {'venue_id': "4b0015c0f964a520b43a22e3"}
+  // {'venue_id': "4b74fd33f964a5204cfa2de3"},
+  // {'venue_id': "4b4ddd13f964a520b6d926e3"},
+  // {'venue_id': "4da6dab08154fe28a8d91eb3"},
+  // {'venue_id': "4b0015c0f964a520b43a22e3"}
 ]
 
 var arrayRes = []
@@ -40,17 +35,12 @@ class App extends Component {
     filteredPlaces: dataPlaces.markers,
     openInfoWindow: false,
     infoWindowPlace: '',
-    items: []
+    itemPlaces: []
   }
 
   componentDidMount() {
-    for (let i = 0; i< params.length; i++) {
-      foursquare.venues.getVenue(params[i])
-      .then(res => {
-        arrayRes.push(res.response);
-        this.setState({ items: arrayRes });
-      });
-    }
+    this.getData()
+    
     // Uncoment to check info from the place stored in variable 
     // let placeToCheck = {
     //     "ll": "40.411341,-3.693528",
@@ -59,6 +49,16 @@ class App extends Component {
     // foursquare.venues.getVenues(placeToCheck)
     //   .then(res=> {
     //     console.log(res.response.venues) });
+  }
+
+  getData() {
+    for (let i = 0; i< params.length; i++) {
+      foursquare.venues.getVenue(params[0])
+      .then(res => {
+        arrayRes.push(res.response);
+        this.setState({ itemPlaces: arrayRes });
+      });
+    }
   }
 
   clickOpenInfoWindow = (id) => {
@@ -80,36 +80,15 @@ class App extends Component {
     })
   }
 
-  // fetchPlaceInfo() {
-  //   fetch({
-  //       url: 'https://api.foursquare.com/v2/venues/explore',
-  //       method: 'GET',
-  //       qs: {
-  //         client_id: 'SUD01OL3D3SNAY2F24URWTTZQVXTGQFD3GV40ASTZDATLQLO',
-  //         client_secret: 'XAPJ4WFMBJELMWUTGEDOWDHP35QSZL1E43ANJC42HWTXNSFI',
-  //         ll: '40.7243,-74.0018',
-  //         query: 'coffee',
-  //         v: '20180323',
-  //         limit: 1
-  //       }
-  //     }, function(err, res, body) {
-  //       if (err) {
-  //         console.error(err);
-  //       } else {
-  //         console.log(body);
-  //       }
-  //     });
-  // }
-
   render() {
-    console.log(this.state.items)
+    console.log(this.state.itemPlaces)
     console.log(arrayRes)
     return (
 
       <div className="App">
         <div>
           <div>Items:</div>
-          {/* { this.state.items.map(item=> { return <div key={item.id}>{item.name}</div>}) } */}
+          {/* { this.state.itemPlaces.map(item=> { return <div key={item.id}>{item.name}</div>}) } */}
         </div>
         <header className="App-header">
           <img src={markerLogo} className="App-logo" alt="logo" />
@@ -122,6 +101,7 @@ class App extends Component {
                 filteredPlaces={this.state.filteredPlaces}
                 clickOpenInfoWindow={this.clickOpenInfoWindow}
                 updateListOfPlaces={this.updateListOfPlaces}
+                itemPlaces={this.state.itemPlaces}
               />
             </div>
             <div className="map-container">
@@ -135,6 +115,7 @@ class App extends Component {
                 clickOpenInfoWindow={this.clickOpenInfoWindow}
                 clickCloseInfoWindow={this.clickCloseInfoWindow}
                 currentPlace={this.state.infoWindowPlace}
+                itemPlaces={this.state.itemPlaces}
               />
             </div>
           </div>
@@ -144,4 +125,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default App

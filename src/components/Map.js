@@ -7,6 +7,7 @@ import {withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react
 import { mapStyle } from './mapStyle.js';
 
 const Map = withScriptjs(withGoogleMap(props => {
+    console.log(props.itemsPlaces);
     
     return (
         <GoogleMap
@@ -14,24 +15,27 @@ const Map = withScriptjs(withGoogleMap(props => {
             defaultZoom={12}
             defaultOptions={{styles: mapStyle.styles}}
         >
-            {props.filteredPlaces.map(place => (
+            {props.itemPlaces.map(place => (
                 <Marker
-                    position={place.location}
-                    key={place.id}
-                    onClick={() => props.clickOpenInfoWindow(place.id)}
+                    position={{"lat": place.venue.location.lat, "lng": place.venue.location.lng}}
+                    key={place.venue.id}
+                    onClick={() => props.clickOpenInfoWindow(place.venue.id)}
                 >
-                    {props.openInfoWindow && place.id === props.currentPlace &&
+                    {props.openInfoWindow && place.venue.id === props.currentPlace &&
                         <InfoWindow
                             onCloseClick={() => props.clickCloseInfoWindow()}
                         >
                             <div className="infowindow">
-                                <div className="place-name">{place.name}</div>
-                                <div className="place-direction"></div>
-                                <div className="place-image"></div>
+                                <a href={place.venue.canonicalUrl} className="place-link">{place.venue.name}</a>
+                                <div className="place-direction">{place.venue.location.address}</div>
+                                <div className="place-image">
+                                    <img className="place-photo" src={place.venue.bestPhoto.prefix + "100" + place.venue.bestPhoto.suffix} alt={place.venue.name}></img>
+                                </div>
                             </div>
                         </InfoWindow>}
                 </Marker>
-            ))}
+            ))
+            }
 
         </GoogleMap>
     )}
