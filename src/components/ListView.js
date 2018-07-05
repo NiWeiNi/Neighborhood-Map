@@ -28,7 +28,7 @@ class ListView extends Component {
     render() {
         console.log(this.props.filteredPlaces)
         // Sort places by name
-        // this.props.filteredPlaces.sort(sortBy('name'))
+        this.props.filteredPlaces.sort(sortBy('venue.name'))
 
         return (
             <div className="list-view">

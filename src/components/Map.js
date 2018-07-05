@@ -6,6 +6,9 @@ import {withScriptjs, withGoogleMap, GoogleMap, Marker, InfoWindow } from 'react
 // Import styles and personalized marker
 import { mapStyle } from './mapStyle.js';
 
+// IMport customized marker
+import markerLogo from '../img/marker.png'
+
 const Map = withScriptjs(withGoogleMap(props => {
     console.log(props.itemsPlaces);
     
@@ -17,9 +20,10 @@ const Map = withScriptjs(withGoogleMap(props => {
         >
             {props.itemPlaces.map(place => (
                 <Marker
-                    position={{"lat": place.venue.location.lat, "lng": place.venue.location.lng}}
+                    icon={markerLogo}
                     key={place.venue.id}
                     onClick={() => props.clickOpenInfoWindow(place.venue.id)}
+                    position={{"lat": place.venue.location.lat, "lng": place.venue.location.lng}}
                 >
                     {props.openInfoWindow && place.venue.id === props.currentPlace &&
                         <InfoWindow
