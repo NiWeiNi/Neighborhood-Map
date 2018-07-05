@@ -87,7 +87,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={markerLogo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Architecure in Madrid</h1>
+          <h1 className="App-title">Amazing places</h1>
         </header>
         <div className="main-content">
             <div className="view-list">

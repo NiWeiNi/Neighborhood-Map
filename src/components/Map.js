@@ -34,6 +34,7 @@ const Map = withScriptjs(withGoogleMap(props => {
                                 <div className="place-image">
                                     <img className="place-photo" src={place.venue.bestPhoto.prefix + "200" + place.venue.bestPhoto.suffix} alt={place.venue.name}></img>
                                 </div>
+                                <div className="place-rating">{place.venue.rating ? place.venue.rating : "-"}</div>
                                 <div className="place-direction">{place.venue.location.address}</div>
                             </div>
                         </InfoWindow>}

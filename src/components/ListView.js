@@ -38,6 +38,7 @@ class ListView extends Component {
                     placeholder="Filter by name"
                     onChange={event => this.updateSearch(event.target.value)}
                 />
+
                 {this.props.filteredPlaces && 
                     <ul className="filtered-list">
                         {this.props.filteredPlaces.map((place) =>
@@ -51,7 +52,8 @@ class ListView extends Component {
                         )}
                     </ul>
                 }
-            
+                
+                <p className="acknowledgment">Powered by React · Data injected by foursquare</p>
             </div>
         )
     }

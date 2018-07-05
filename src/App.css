@@ -54,7 +54,16 @@ html {
   grid-template-columns: 20% 80%;
 }
 
-.list-view,
+/* List style */
+
+.list-view {
+  background-color: #222;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: 10px 40px 0 40px;
+}
+
 .view-list {
   background-color: #222;
 }
@@ -63,12 +72,12 @@ html {
   font-size: 16px;
   height: 30px;
   margin-top: 20px;
-  padding: 5px;
-  width: calc(100% - 60px);
+  width: 100%;
 }
 
 .filtered-list {
   color: white;
+  flex: 1;
   font-size: 16px;
   list-style: none;
   padding: 0;
@@ -76,10 +85,51 @@ html {
 }
 
 .li-place {
-  padding: 15px 30px;
+  padding: 15px 0;
 }
 
 .li-place:hover {
   background-color: rgb(94, 94, 94);
   cursor: pointer;
+}
+
+.acknowledgment {
+  color: grey;
+  font-size: 14px;
+}
+
+/* Infowindows styles */
+
+.infowindow {
+  padding: 10px 5px;
+  width: 225px;
+}
+
+.place-link {
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.place-image {
+  padding: 20px 0 20px 0;
+}
+
+.place-rating {
+  background-color: var(--scarlet);
+  border-radius: 50%;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  height: 40px;
+  text-align: center;
+  margin: auto;
+  padding: 10px;
+  width: 40px;
+}
+
+.place-direction {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 0;
 }
