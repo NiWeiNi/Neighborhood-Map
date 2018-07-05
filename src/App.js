@@ -20,10 +20,10 @@ var foursquare = require('react-foursquare')({
 // Places to render with venue_id
 var params = [
   {'venue_id': "4afde737f964a520e72b22e3"},
-  // {'venue_id': "4b74fd33f964a5204cfa2de3"},
-  // {'venue_id': "4b4ddd13f964a520b6d926e3"},
-  // {'venue_id': "4da6dab08154fe28a8d91eb3"},
-  // {'venue_id': "4b0015c0f964a520b43a22e3"}
+  {'venue_id': "4b74fd33f964a5204cfa2de3"},
+  {'venue_id': "4b4ddd13f964a520b6d926e3"},
+  {'venue_id': "4da6dab08154fe28a8d91eb3"},
+  {'venue_id': "4b0015c0f964a520b43a22e3"}
 ]
 
 var arrayRes = []
@@ -31,8 +31,7 @@ var arrayRes = []
 class App extends Component {
 
   state = {
-    places: dataPlaces.markers,
-    filteredPlaces: dataPlaces.markers,
+    filteredPlaces: [],
     openInfoWindow: false,
     infoWindowPlace: '',
     itemPlaces: []
@@ -40,7 +39,6 @@ class App extends Component {
 
   componentDidMount() {
     this.getData()
-    
     // Uncoment to check info from the place stored in variable 
     // let placeToCheck = {
     //     "ll": "40.411341,-3.693528",
@@ -53,12 +51,13 @@ class App extends Component {
 
   getData() {
     for (let i = 0; i< params.length; i++) {
-      foursquare.venues.getVenue(params[0])
+      foursquare.venues.getVenue(params[i])
       .then(res => {
         arrayRes.push(res.response);
-        this.setState({ itemPlaces: arrayRes });
+        this.setState({ itemPlaces: arrayRes, filteredPlaces: arrayRes});
       });
     }
+
   }
 
   clickOpenInfoWindow = (id) => {
@@ -86,10 +85,6 @@ class App extends Component {
     return (
 
       <div className="App">
-        <div>
-          <div>Items:</div>
-          {/* { this.state.itemPlaces.map(item=> { return <div key={item.id}>{item.name}</div>}) } */}
-        </div>
         <header className="App-header">
           <img src={markerLogo} className="App-logo" alt="logo" />
           <h1 className="App-title">Architecure in Madrid</h1>

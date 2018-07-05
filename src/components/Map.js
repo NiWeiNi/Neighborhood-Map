@@ -27,10 +27,10 @@ const Map = withScriptjs(withGoogleMap(props => {
                         >
                             <div className="infowindow">
                                 <a href={place.venue.canonicalUrl} className="place-link">{place.venue.name}</a>
-                                <div className="place-direction">{place.venue.location.address}</div>
                                 <div className="place-image">
-                                    <img className="place-photo" src={place.venue.bestPhoto.prefix + "100" + place.venue.bestPhoto.suffix} alt={place.venue.name}></img>
+                                    <img className="place-photo" src={place.venue.bestPhoto.prefix + "200" + place.venue.bestPhoto.suffix} alt={place.venue.name}></img>
                                 </div>
+                                <div className="place-direction">{place.venue.location.address}</div>
                             </div>
                         </InfoWindow>}
                 </Marker>

@@ -43,10 +43,10 @@ class ListView extends Component {
                         {this.props.filteredPlaces.map((place) =>
                             <li
                                 className="li-place"
-                                key={place.id}
-                                onClick={() => this.props.clickOpenInfoWindow(place.id)}
+                                key={place.venue.id}
+                                onClick={() => this.props.clickOpenInfoWindow(place.venue.id)}
                             >
-                            {place.name}
+                            {place.venue.name}
                             </li>
                         )}
                     </ul>
