@@ -19,16 +19,16 @@ class ListView extends Component {
         // Check if search term match something in places
         if (query) {
             const match = new RegExp(escapeRegExp(query), 'i');
-            this.props.updateListOfPlaces(this.props.places.filter((place) => match.test(place.name)))
+            this.props.updateListOfPlaces(this.props.itemPlaces.filter((place) => match.test(place.venue.name)))
         } else {
-            this.props.updateListOfPlaces(this.props.places);
+            this.props.updateListOfPlaces(this.props.itemPlaces);
         }
     }
     
     render() {
         console.log(this.props.filteredPlaces)
         // Sort places by name
-        this.props.filteredPlaces.sort(sortBy('name'))
+        // this.props.filteredPlaces.sort(sortBy('name'))
 
         return (
             <div className="list-view">
