@@ -34,4 +34,4 @@ Academic exercise, pull request may not be accepted
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the License.md file for details
