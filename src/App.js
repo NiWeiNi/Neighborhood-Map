@@ -51,7 +51,6 @@ class App extends Component {
         this.setState({ itemPlaces: arrayRes, filteredPlaces: arrayRes});
       });
     }
-
   }
 
   // Function to open infowindow if flag is true and the clicked place has the same id than the infowindow
@@ -80,8 +79,15 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={markerLogo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Amazing places in Madrid</h1>
+          <div className="hamburger">
+            <div className="hamburger-line"></div>
+            <div className="hamburger-line"></div>
+            <div className="hamburger-line"></div>
+          </div>
+          <div className="title">
+            <img src={markerLogo} className="App-logo" alt="logo"/>
+            <h1 className="App-title">Amazing places in Madrid</h1>
+          </div>
         </header>
         {/* Create a container for the map and list to style */}
         <div className="main-content">
