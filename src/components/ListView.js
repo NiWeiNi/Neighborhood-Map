@@ -15,8 +15,8 @@ class ListView extends Component {
         this.updatePlaces(this.state.query)
     }
 
+    // Check if search term match something in itemPlaces
     updatePlaces = (query) => {
-        // Check if search term match something in places
         if (query) {
             const match = new RegExp(escapeRegExp(query), 'i');
             this.props.updateListOfPlaces(this.props.itemPlaces.filter((place) => match.test(place.venue.name)))
@@ -26,11 +26,12 @@ class ListView extends Component {
     }
     
     render() {
-        console.log(this.props.filteredPlaces)
         // Sort places by name
-        this.props.filteredPlaces.sort(sortBy('venue.name'))
+        const {filteredPlaces} = this.props
+        filteredPlaces.sort(sortBy('venue.name'))
 
         return (
+            // Container of the input and list to style
             <div className="list-view">
                 <input
                     type="text"
@@ -38,7 +39,7 @@ class ListView extends Component {
                     placeholder="Filter by name"
                     onChange={event => this.updateSearch(event.target.value)}
                 />
-
+                {/* Display list of places according to search term, if no term, default entire list */}
                 {this.props.filteredPlaces && 
                     <ul className="filtered-list">
                         {this.props.filteredPlaces.map((place) =>
@@ -52,8 +53,8 @@ class ListView extends Component {
                         )}
                     </ul>
                 }
-                
-                <p className="acknowledgment">Powered by React · Data injected by foursquare</p>
+                {/* List footer */}
+                <p className="acknowledgment">Powered by React · Data provided by foursquare</p>
             </div>
         )
     }

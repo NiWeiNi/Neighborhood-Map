@@ -10,8 +10,6 @@ import { mapStyle } from './mapStyle.js';
 import markerLogo from '../img/marker.png'
 
 const Map = withScriptjs(withGoogleMap(props => {
-    console.log(props.itemsPlaces);
-    
     return (
         <GoogleMap
             defaultCenter={{lat: 40.415363, lng: -3.707398}}
