@@ -4,29 +4,20 @@ import React, { Component } from 'react';
 import './App.css';
 import markerLogo from './img/marker.png'
 
-// Import data
-import dataPlaces from './data/buildings.json'
+// Import data, places to render
+import params from './data/buildings.js'
 
 // Import components
 import Map from './components/Map.js'
 import ListView from './components/ListView';
 
 // Access to foursquare API
-var foursquare = require('react-foursquare')({
+const foursquare = require('react-foursquare')({
   clientID: 'SUD01OL3D3SNAY2F24URWTTZQVXTGQFD3GV40ASTZDATLQLO',
   clientSecret: 'VXI1IVXQMQLVO2GLMBXAZUGKN3HKILW0FZANH1JDZXDRSUQG'  
 });
 
-// Places to render with venue_id
-var params = [
-  {'venue_id': "4afde737f964a520e72b22e3"},
-  {'venue_id': "4b74fd33f964a5204cfa2de3"},
-  {'venue_id': "4b4ddd13f964a520b6d926e3"},
-  {'venue_id': "4da6dab08154fe28a8d91eb3"},
-  {'venue_id': "4b0015c0f964a520b43a22e3"}
-]
-
-var arrayRes = []
+let arrayRes = []
 
 class App extends Component {
 
@@ -38,17 +29,20 @@ class App extends Component {
   }
 
   componentDidMount() {
+    // Change document title in browser
+    document.title = "Amazing places in Madrid"
     this.getData()
     // Uncoment to check info from the place stored in variable 
     // let placeToCheck = {
-    //     "ll": "40.411341,-3.693528",
-    //     "query": 'caixa'
+    //     "ll": "40.417955,-3.697572",
+    //     "query": 'fundacion telefonica'
     // }
     // foursquare.venues.getVenues(placeToCheck)
     //   .then(res=> {
-    //     console.log(res.response.venues) });
+    //     console.log(res.response) });
   }
 
+  // Fecth data from the foursquare API
   getData() {
     for (let i = 0; i< params.length; i++) {
       foursquare.venues.getVenue(params[i])
@@ -60,6 +54,7 @@ class App extends Component {
 
   }
 
+  // Function to open infowindow if flag is true and the clicked place has the same id than the infowindow
   clickOpenInfoWindow = (id) => {
     this.setState({
       openInfoWindow: true,
@@ -67,12 +62,14 @@ class App extends Component {
     })
   }
 
+  // Function to open infowindow by changing the flag to false
   clickCloseInfoWindow = () => {
     this.setState({
       openInfoWindow: false
     })
   }
 
+  // Function to filter the initial list down to the matches
   updateListOfPlaces = (results) => {
     this.setState({
       filteredPlaces: results
@@ -80,15 +77,13 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.itemPlaces)
-    console.log(arrayRes)
     return (
-
       <div className="App">
         <header className="App-header">
           <img src={markerLogo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Amazing places</h1>
+          <h1 className="App-title">Amazing places in Madrid</h1>
         </header>
+        {/* Create a container for the map and list to style */}
         <div className="main-content">
             <div className="view-list">
               <ListView
