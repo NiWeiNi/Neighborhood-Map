@@ -54,6 +54,10 @@ html {
 
 /* List style */
 
+.view-list {
+  background-color: #222;
+}
+
 .list-view {
   background-color: #222;
   display: flex;
@@ -62,10 +66,6 @@ html {
   min-height: calc(100% - 40px);
   padding: 10px 40px 0 40px;
   overflow: hidden;
-}
-
-.view-list {
-  background-color: #222;
 }
 
 #filter {
@@ -190,16 +190,15 @@ Media queries
     grid-template-columns: 100%;
   }
 
-  .list-view {
-    left: -100%;
+  .view-list {
+    left: calc(-100% - 160px);
     position: absolute;
     transition: 1s ease;
     z-index: 1;
-  }
-
-  .hamburger-line:active .list-view {
-    left: 0px;
-    transition: 1s;
+  }  
+  
+  .hamburger:hover .view-list {
+    left: 0;
   }
   
   .view-list {

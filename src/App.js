@@ -25,7 +25,8 @@ class App extends Component {
     filteredPlaces: [],
     openInfoWindow: false,
     infoWindowPlace: '',
-    itemPlaces: []
+    itemPlaces: [],
+    menuActive: false
   }
 
   componentDidMount() {
@@ -53,6 +54,11 @@ class App extends Component {
     }
   }
 
+  // Function to open viewList in small screens by switching flag in state
+  clickOpenViewList = () => {
+    this.setState({menuActive: !this.state.menuActive})
+  }
+
   // Function to open infowindow if flag is true and the clicked place has the same id than the infowindow
   clickOpenInfoWindow = (id) => {
     this.setState({
@@ -76,10 +82,15 @@ class App extends Component {
   }
 
   render() {
+
+    // Variable to store position of the ViewList acordding to flag in state
+    const openMenu = this.state.menuActive ? "0" : "calc(-100% - 160px)";
+
     return (
       <div className="App">
         <header className="App-header">
-          <div className="hamburger">
+          {/* Hamburger container and click function to open/close */}
+          <div className="hamburger" onClick={this.clickOpenViewList.bind(this)}>
             <div className="hamburger-line"></div>
             <div className="hamburger-line"></div>
             <div className="hamburger-line"></div>
@@ -91,7 +102,7 @@ class App extends Component {
         </header>
         {/* Create a container for the map and list to style */}
         <div className="main-content">
-            <div className="view-list">
+            <div className="view-list" style={{left:openMenu}}>
               <ListView
                 places={this.state.places}
                 filteredPlaces={this.state.filteredPlaces}
