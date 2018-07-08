@@ -22,6 +22,24 @@ npm start
 ```
 The web should open in your default browser.
 
+## Add more places to map
+
+1. Retrieve place id from foursquare by adding these lines of code in ComponentDidMount:
+```
+    let placeToCheck = {
+        "ll": "40.417955,-3.697572",
+        "query": 'Place to search'
+    }
+    foursquare.venues.getVenues(placeToCheck)
+      .then(res=> {
+        console.log(res.response)});
+```
+2. In the previous snippet, change ll, latitud and longitud, and query of the place you want to search.
+
+3. In dev tools console copy the place id and create a new object inside the array _params_ inside buildings.js
+
+4. Remove the previous code add and it is done.
+
 ## Built With
 
 * [React](https://reactjs.org/) - JS library

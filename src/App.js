@@ -32,15 +32,7 @@ class App extends Component {
   componentDidMount() {
     // Change document title in browser
     document.title = "Amazing places in Madrid"
-    this.getData()
-    // Uncoment to check info from the place stored in variable 
-    // let placeToCheck = {
-    //     "ll": "40.417955,-3.697572",
-    //     "query": 'fundacion telefonica'
-    // }
-    // foursquare.venues.getVenues(placeToCheck)
-    //   .then(res=> {
-    //     console.log(res.response) });
+    this.getData()    
   }
 
   // Fecth data from the foursquare API
