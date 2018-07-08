@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 // Import styles
 import './App.css';
-import markerLogo from './img/marker.png'
+import markerLogo from './img/marker.png';
 
 // Import data, places to render
-import params from './data/buildings.js'
+import params from './data/buildings.js';
 
 // Import components
-import Map from './components/Map.js'
+import Map from './components/Map.js';
 import ListView from './components/ListView';
 
 // Access to foursquare API
@@ -20,6 +21,15 @@ const foursquare = require('react-foursquare')({
 let arrayRes = []
 
 class App extends Component {
+
+  // Check for proptypes
+  static propTypes = {
+    filteredPlaces: PropTypes.array,
+    infoWindowPlace: PropTypes.string,
+    itemPlaces: PropTypes.array,
+    openInfoWindow: PropTypes.bool,
+    menuActive: PropTypes.bool,
+  }
 
   state = {
     filteredPlaces: [],
@@ -55,7 +65,8 @@ class App extends Component {
   clickOpenInfoWindow = (id) => {
     this.setState({
       openInfoWindow: true,
-      infoWindowPlace: id
+      infoWindowPlace: id,
+      menuActive: false
     })
   }
 
@@ -96,7 +107,6 @@ class App extends Component {
         <div className="main-content">
             <div className="view-list" style={{left:openMenu}}>
               <ListView
-                places={this.state.places}
                 filteredPlaces={this.state.filteredPlaces}
                 clickOpenInfoWindow={this.clickOpenInfoWindow}
                 updateListOfPlaces={this.updateListOfPlaces}
