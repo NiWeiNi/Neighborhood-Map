@@ -11,4 +11,5 @@ var params = [
   {'venue_id': "4adcda40f964a5206e3e21e3"},
   {'venue_id': "4b790f5af964a5205fea2ee3"}
 ]
+
 export default params;

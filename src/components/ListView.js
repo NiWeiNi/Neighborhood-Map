@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+
+// Dependecies for search
 import escapeRegExp from 'escape-string-regexp'
 import sortBy from 'sort-by'
 
@@ -8,6 +10,7 @@ class ListView extends Component {
         query: ''
     }
 
+    // Delete spaces from query and set state with that query
     updateSearch = (query) => {
         this.setState({
             query: query.trim()
