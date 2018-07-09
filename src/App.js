@@ -47,13 +47,11 @@ class App extends Component {
 
   // Fecth data from the foursquare API
   getData() {
-    for (let i = 0; i< params.length; i++) {
-      foursquare.venues.getVenue(params[i])
-      .then(res => {
-        arrayRes.push(res.response);
-        this.setState({ itemPlaces: arrayRes, filteredPlaces: arrayRes});
-      });
-    }
+    params.forEach(param => foursquare.venues.getVenue(param)
+    .then(res => {
+      arrayRes.push(res.response);
+      this.setState({ itemPlaces: arrayRes, filteredPlaces: arrayRes});
+    }))
   }
 
   // Function to open viewList in small screens by switching flag in state
