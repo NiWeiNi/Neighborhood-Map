@@ -1,4 +1,4 @@
-# Project Title
+# Neighborhood map
 
 Final project for Udacity´s FEND. The project consists in a map displaying points of interest in an area and to provide details for the places retrieving data from a third party web.
 
