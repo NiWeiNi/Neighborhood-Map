@@ -64,14 +64,15 @@ class App extends Component {
     this.setState({
       openInfoWindow: true,
       infoWindowPlace: id,
-      menuActive: false
+      menuActive: false,
     })
   }
 
-  // Function to open infowindow by changing the flag to false
+  // Function to open infowindow by changing the flag to false and desactivate animation on marker
   clickCloseInfoWindow = () => {
     this.setState({
-      openInfoWindow: false
+      openInfoWindow: false,
+      infoWindowPlace: ''
     })
   }
 
@@ -123,7 +124,6 @@ class App extends Component {
                   clickOpenInfoWindow={this.clickOpenInfoWindow}
                   clickCloseInfoWindow={this.clickCloseInfoWindow}
                   currentPlace={this.state.infoWindowPlace}
-                  itemPlaces={this.state.itemPlaces}
                 />
               : <div className="error-map">
                   <p>

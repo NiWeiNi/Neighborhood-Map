@@ -22,7 +22,7 @@ class ListView extends Component {
     updatePlaces = (query) => {
         if (query) {
             const match = new RegExp(escapeRegExp(query), 'i');
-            this.props.updateListOfPlaces(this.props.itemPlaces.filter((place) => match.test(place.venue.name)))
+            this.props.updateListOfPlaces = this.props.itemPlaces.filter((place) => match.test(place.venue.name))
         } else {
             this.props.updateListOfPlaces(this.props.itemPlaces);
         }

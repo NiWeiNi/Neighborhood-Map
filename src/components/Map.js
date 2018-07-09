@@ -16,8 +16,9 @@ const Map = withScriptjs(withGoogleMap(props => {
             defaultZoom={12}
             defaultOptions={{styles: mapStyle.styles}}
         >
-            {props.itemPlaces.map(place => (
+            {props.filteredPlaces.map(place => (
                 <Marker
+                    animation={place.venue.id === props.currentPlace ? 1 : 2}
                     icon={markerLogo}
                     key={place.venue.id}
                     onClick={() => props.clickOpenInfoWindow(place.venue.id)}
