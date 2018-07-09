@@ -22,6 +22,7 @@ const Map = withScriptjs(withGoogleMap(props => {
                     key={place.venue.id}
                     onClick={() => props.clickOpenInfoWindow(place.venue.id)}
                     position={{"lat": place.venue.location.lat, "lng": place.venue.location.lng}}
+                    tabIndex="0"
                 >
                     {props.openInfoWindow && place.venue.id === props.currentPlace &&
                         <InfoWindow

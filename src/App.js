@@ -114,18 +114,31 @@ class App extends Component {
               />
             </div>
             <div className="map-container">
-              <Map
-                googleMapURL= "https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg&v=3.exp&libraries=geometry,drawing,places"
-                loadingElement={<div style={{ height: '100%' }} />}
-                containerElement={<div style={{ height: 'calc(100vh - 80px)'}} />}
-                mapElement={<div style={{ height: '100%' }} />}
-                filteredPlaces={this.state.filteredPlaces}
-                openInfoWindow={this.state.openInfoWindow}
-                clickOpenInfoWindow={this.clickOpenInfoWindow}
-                clickCloseInfoWindow={this.clickCloseInfoWindow}
-                currentPlace={this.state.infoWindowPlace}
-                itemPlaces={this.state.itemPlaces}
-              />
+            { this.state.filteredPlaces ?
+                <Map
+                  googleMapURL= "https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg&v=3.exp&libraries=geometry,drawing,places"
+                  loadingElement={<div style={{ height: '100%' }} />}
+                  containerElement={<div style={{ height: 'calc(100vh - 80px)'}} />}
+                  mapElement={<div style={{ height: '100%' }} />}
+                  filteredPlaces={this.state.filteredPlaces}
+                  openInfoWindow={this.state.openInfoWindow}
+                  clickOpenInfoWindow={this.clickOpenInfoWindow}
+                  clickCloseInfoWindow={this.clickCloseInfoWindow}
+                  currentPlace={this.state.infoWindowPlace}
+                  itemPlaces={this.state.itemPlaces}
+                />
+              : <div className="error-map">
+                  <p>
+                    Error: 
+                  </p>
+                  <p>
+                    This is a little embarrassing, we cannot connect to the site at the moment
+                  </p>
+                  <p>
+                    Please, stay tunned as we will back asap
+                  </p>  
+                </div>
+            }
             </div>
           </div>
       </div>
