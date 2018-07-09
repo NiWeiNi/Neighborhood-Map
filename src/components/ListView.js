@@ -60,8 +60,8 @@ class ListView extends Component {
                     </ul>
                     :
                     <div className="list-error">
-                        <p>In progress...</p>
-                        <p>Working to solve the error, our sincerest apologies. Please refresh the page or try later</p>
+                        <p>Error:</p>
+                        <p>Please refresh the page or try another term</p>
                     </div>
                 }
                 {/* List footer */}
