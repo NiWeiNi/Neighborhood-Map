@@ -15,14 +15,14 @@ class ListView extends Component {
         this.setState({
             query: query.trim()
         })
-        this.updatePlaces(this.state.query)
+        this.updateListOfPlaces(query)
     }
 
     // Check if search term match something in itemPlaces
-    updatePlaces = (query) => {
+    updateListOfPlaces = (query) => {
         if (query) {
             const match = new RegExp(escapeRegExp(query), 'i');
-            this.props.updateListOfPlaces = this.props.itemPlaces.filter((place) => match.test(place.venue.name))
+            this.props.updateListOfPlaces(this.props.itemPlaces.filter((place) => match.test(place.venue.name)))
         } else {
             this.props.updateListOfPlaces(this.props.itemPlaces);
         }
