@@ -65,7 +65,10 @@ class ListView extends Component {
                         )}
                     </ul>
                     :
-                    <div className="list-error">
+                    <div
+                        className="list-error"
+                        aria-label="Error message"
+                    >
                         <p>Error:</p>
                         <p>Please refresh the page or try another term</p>
                     </div>
