@@ -35,7 +35,10 @@ class ListView extends Component {
 
         return (
             // Container of the input and list to style
-            <div className="list-view">
+            <div
+                className="list-view"
+                aria-label="List view with filter input"
+            >
                 <input
                     aria-label="Filter by name input"
                     type="text"
@@ -45,7 +48,10 @@ class ListView extends Component {
                 />
                 {/* Display list of places according to search term, if no term, default entire list */}
                 {this.props.filteredPlaces.length > 0 ?  
-                    <ul className="filtered-list">
+                    <ul
+                        className="filtered-list"
+                        aria-label="List of amazing places"
+                    >
                         {this.props.filteredPlaces.map((place) =>
                             <li
                                 aria-label={place.venue.name}
