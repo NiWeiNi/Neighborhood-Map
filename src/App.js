@@ -15,7 +15,7 @@ import ListView from './components/ListView';
 // Access to foursquare API
 const foursquare = require('react-foursquare')({
   clientID: 'SUD01OL3D3SNAY2F24URWTTZQVXTGQFD3GV40ASTZDATLQLO',
-  clientSecret: 'VXI1IVXQMQLVO2GLMBXAZUGKN3HKILW0FZANH1JDZXDRSUQG'  
+  clientSecret: 'VXI1IVXQMQLVO2GLMBXAZUGKN3HKILW0FZANH1JDZXDRSUQG'
 });
 
 let arrayRes = []
@@ -32,11 +32,12 @@ class App extends Component {
   }
 
   state = {
+    error: '',
     filteredPlaces: [],
-    openInfoWindow: false,
     infoWindowPlace: '',
     itemPlaces: [],
-    menuActive: false
+    menuActive: false,
+    openInfoWindow: false
   }
 
   componentDidMount() {
@@ -49,13 +50,17 @@ class App extends Component {
 
   // Fecth data from the foursquare API
   getData() {
+  try {
     params.forEach(param => foursquare.venues.getVenue(param)
     .then(res => {
       arrayRes.push(res.response);
       this.setState({ itemPlaces: arrayRes, filteredPlaces: arrayRes});
-    })
-    .catch()
-  )}
+    }));
+  }
+  catch(error) {
+    this.setState({error: "This is a little embarrassing, we cannot connect to the site at the moment. Please, stay tunned as we will back asap"});
+  }
+}
 
   // Function to display error message when response from API fails
   gm_authFailure() {
@@ -93,7 +98,7 @@ class App extends Component {
   }
 
   render() {
-
+    console.log(this.state.error);  console.log(this.state.fil); 
     // Variable to store position of the ViewList acordding to flag in state
     const openMenu = this.state.menuActive ? "0" : "calc(-100% - 160px)";
 
@@ -115,6 +120,7 @@ class App extends Component {
         <div className="main-content">
             <div className="view-list" style={{left:openMenu}}>
               <ListView
+                error={this.state.error}
                 filteredPlaces={this.state.filteredPlaces}
                 clickOpenInfoWindow={this.clickOpenInfoWindow}
                 updateListOfPlaces={this.updateListOfPlaces}
@@ -122,8 +128,13 @@ class App extends Component {
               />
             </div>
             <div className="map-container">
-            { this.state.filteredPlaces ?
+            { this.state.error ?
+                <div className="error-map">
+                  {this.state.error}
+                </div>
+              :
                 <Map
+                  error={this.state.error}
                   googleMapURL= "https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg&v=3.exp&libraries=geometry,drawing,places"
                   loadingElement={<div style={{ height: '100%' }} />}
                   containerElement={<div style={{ height: 'calc(100vh - 80px)'}} />}
@@ -134,17 +145,6 @@ class App extends Component {
                   clickCloseInfoWindow={this.clickCloseInfoWindow}
                   currentPlace={this.state.infoWindowPlace}
                 />
-              : <div className="error-map">
-                  <p>
-                    Error: 
-                  </p>
-                  <p>
-                    This is a little embarrassing, we cannot connect to the site at the moment
-                  </p>
-                  <p>
-                    Please, stay tunned as we will back asap
-                  </p>  
-                </div>
             }
             </div>
           </div>

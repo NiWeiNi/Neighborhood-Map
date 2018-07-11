@@ -47,12 +47,20 @@ class ListView extends Component {
                     onChange={event => this.updateSearch(event.target.value)}
                 />
                 {/* Display list of places according to search term, if no term, default entire list */}
-                {this.props.filteredPlaces.length > 0 ?  
+                {this.props.error ?  
+                    <div
+                        className="list-error"
+                        aria-label="Error message"
+                    >
+                        <p>Error:</p>
+                        <p>Please refresh the page or try later</p>
+                    </div>
+                    :
                     <ul
                         className="filtered-list"
                         aria-label="List of amazing places"
                     >
-                        {this.props.filteredPlaces.map((place) =>
+                        {filteredPlaces.map((place) =>
                             <li
                                 aria-label={place.venue.name}
                                 className="li-place"
@@ -64,14 +72,6 @@ class ListView extends Component {
                             </li>
                         )}
                     </ul>
-                    :
-                    <div
-                        className="list-error"
-                        aria-label="Error message"
-                    >
-                        <p>Error:</p>
-                        <p>Please refresh the page or try another term</p>
-                    </div>
                 }
                 {/* List footer */}
                 <p className="acknowledgment">Powered by React · Data provided by foursquare</p>
