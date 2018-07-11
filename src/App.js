@@ -98,7 +98,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.error);  console.log(this.state.fil); 
     // Variable to store position of the ViewList acordding to flag in state
     const openMenu = this.state.menuActive ? "0" : "calc(-100% - 160px)";
 
