@@ -117,7 +117,7 @@ class App extends Component {
           </div>
         </header>
         {/* Create a container for the map and list to style */}
-        <div className="main-content">
+        <section className="main-content">
             <div className="view-list" style={{left:openMenu}}>
               <ListView
                 error={this.state.error}
@@ -127,11 +127,11 @@ class App extends Component {
                 itemPlaces={this.state.itemPlaces}
               />
             </div>
-            <div className="map-container">
+            <section className="map-container">
             { this.state.error ?
-                <div className="error-map">
+                <section className="error-map">
                   {this.state.error}
-                </div>
+                </section>
               :
                 <Map
                   error={this.state.error}
@@ -146,8 +146,8 @@ class App extends Component {
                   currentPlace={this.state.infoWindowPlace}
                 />
             }
-            </div>
-          </div>
+            </section>
+          </section>
       </div>
  
     );
