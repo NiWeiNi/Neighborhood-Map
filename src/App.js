@@ -40,6 +40,8 @@ class App extends Component {
   }
 
   componentDidMount() {
+    // Call gm_authFailure in case of error in Google maps
+    window.gm_authFailure = this.gm_authFailure;
     // Change document title in browser
     document.title = "Amazing places in Madrid"
     this.getData()    
@@ -51,7 +53,14 @@ class App extends Component {
     .then(res => {
       arrayRes.push(res.response);
       this.setState({ itemPlaces: arrayRes, filteredPlaces: arrayRes});
-    }))
+    })
+    .catch()
+  )}
+
+  // Function to display error message when response from API fails
+  gm_authFailure() {
+    const mapContainer = document.querySelector(".map-container");
+    mapContainer.innerHTML = "<p>Google Maps error. Please try later</p>";
   }
 
   // Function to open viewList in small screens by switching flag in state
