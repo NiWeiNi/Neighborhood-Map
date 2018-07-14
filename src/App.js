@@ -12,12 +12,6 @@ import params from './data/buildings.js';
 import Map from './components/Map.js';
 import ListView from './components/ListView';
 
-// Access to foursquare API
-const foursquare = require('react-foursquare')({
-  clientID: 'SUD01OL3D3SNAY2F24URWTTZQVXTGQFD3GV40ASTZDATLQLO',
-  clientSecret: 'VXI1IVXQMQLVO2GLMBXAZUGKN3HKILW0FZANH1JDZXDRSUQG' //G
-});
-
 let arrayRes = []
 
 class App extends Component {
