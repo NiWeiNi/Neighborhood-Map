@@ -15,7 +15,7 @@ import ListView from './components/ListView';
 // Access to foursquare API
 const foursquare = require('react-foursquare')({
   clientID: 'SUD01OL3D3SNAY2F24URWTTZQVXTGQFD3GV40ASTZDATLQLO',
-  clientSecret: 'VXI1IVXQMQLVO2GLMBXAZUGKN3HKILW0FZANH1JDZXDRSUQG'
+  clientSecret: 'VXI1IVXQMQLVO2GLMBXAZUGKN3HKILW0FZANH1JDZXDRSUQG' //G
 });
 
 let arrayRes = []
@@ -33,6 +33,7 @@ class App extends Component {
 
   state = {
     error: '',
+    errorFoursquare: '',
     filteredPlaces: [],
     infoWindowPlace: '',
     itemPlaces: [],
@@ -44,23 +45,27 @@ class App extends Component {
     // Call gm_authFailure in case of error in Google maps
     window.gm_authFailure = this.gm_authFailure;
     // Change document title in browser
-    document.title = "Amazing places in Madrid"
-    this.getData()    
+    document.title = "Amazing places in Madrid";
+    // Cicle through params and retrieve all places from params
+    params.forEach( param =>
+      this.getVenue(param.venue_id)
+    )
   }
 
-  // Fecth data from the foursquare API
-  getData() {
-  try {
-    params.forEach(param => foursquare.venues.getVenue(param)
-    .then(res => {
-      arrayRes.push(res.response);
+  // Fetch data and set states with response or display error message
+  getVenue(venue_id) {
+    fetch(`https://api.foursquare.com/v2/venues/${venue_id}?client_id=SUD01OL3D3SNAY2F24URWTTZQVXTGQFD3GV40ASTZDATLQLO&client_secret=VXI1IVXQMQLVO2GLMBXAZUGKN3HKILW0FZANH1JDZXDRSUQG&v=20140714`)
+    .then(res => res.json())
+    .then(data => {
+      const venue = data.response.venue
+      arrayRes.push(venue);
+      venue.isVisible =true
       this.setState({ itemPlaces: arrayRes, filteredPlaces: arrayRes});
-    }));
+    })
+    .catch( () => {
+      this.setState({ error: 'Failed to retrieve places from foursquare, please try later.'})
+    })
   }
-  catch(error) {
-    this.setState({error: "This is a little embarrassing, we cannot connect to the site at the moment. Please, stay tunned as we will back asap"});
-  }
-}
 
   // Function to display error message when response from API fails
   gm_authFailure() {
@@ -98,6 +103,7 @@ class App extends Component {
   }
 
   render() {
+
     // Variable to store position of the ViewList acordding to flag in state
     const openMenu = this.state.menuActive ? "0" : "calc(-100% - 160px)";
 

@@ -18,24 +18,24 @@ const Map = withScriptjs(withGoogleMap(props => {
         >
             {props.filteredPlaces.map(place => (
                 <Marker
-                    animation={place.venue.id === props.currentPlace ? 1 : 2}
+                    animation={place.id === props.currentPlace ? 1 : 2}
                     icon={markerLogo}
-                    key={place.venue.id}
-                    onClick={() => props.clickOpenInfoWindow(place.venue.id)}
-                    position={{"lat": place.venue.location.lat, "lng": place.venue.location.lng}}
+                    key={place.id}
+                    onClick={() => props.clickOpenInfoWindow(place.id)}
+                    position={{"lat": place.location.lat, "lng": place.location.lng}}
                     tabIndex="0"
                 >
-                    {props.openInfoWindow && place.venue.id === props.currentPlace &&
+                    {props.openInfoWindow && place.id === props.currentPlace &&
                         <InfoWindow
                             onCloseClick={() => props.clickCloseInfoWindow()}
                         >
                             <div className="infowindow">
-                                <a href={place.venue.canonicalUrl} className="place-link">{place.venue.name}</a>
+                                <a href={place.canonicalUrl} className="place-link">{place.name}</a>
                                 <div className="place-image">
-                                    <img className="place-photo" src={place.venue.bestPhoto.prefix + "200" + place.venue.bestPhoto.suffix} alt={place.venue.name}></img>
+                                    <img className="place-photo" src={place.bestPhoto.prefix + "200" + place.bestPhoto.suffix} alt={place.name}></img>
                                 </div>
-                                <div className="place-rating">{place.venue.rating ? place.venue.rating : "-"}</div>
-                                <div className="place-direction">{place.venue.location.address}</div>
+                                <div className="place-rating">{place.rating ? place.rating : "-"}</div>
+                                <div className="place-direction">{place.location.address}</div>
                             </div>
                         </InfoWindow>}
                 </Marker>

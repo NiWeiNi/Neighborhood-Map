@@ -22,7 +22,7 @@ class ListView extends Component {
     updateListOfPlaces = (query) => {
         if (query) {
             const match = new RegExp(escapeRegExp(query), 'i');
-            this.props.updateListOfPlaces(this.props.itemPlaces.filter((place) => match.test(place.venue.name)))
+            this.props.updateListOfPlaces(this.props.itemPlaces.filter((place) => match.test(place.name)))
         } else {
             this.props.updateListOfPlaces(this.props.itemPlaces);
         }
@@ -31,7 +31,7 @@ class ListView extends Component {
     render() {
         // Sort places by name
         const {filteredPlaces} = this.props
-        filteredPlaces ? filteredPlaces.sort(sortBy('venue.name')) : null
+        filteredPlaces ? filteredPlaces.sort(sortBy('name')) : null
 
         return (
             // Container of the input and list to style
@@ -62,13 +62,13 @@ class ListView extends Component {
                     >
                         {filteredPlaces.map((place) =>
                             <li
-                                aria-label={place.venue.name}
+                                aria-label={place.name}
                                 className="li-place"
-                                key={place.venue.id}
-                                onClick={() => this.props.clickOpenInfoWindow(place.venue.id)}
+                                key={place.id}
+                                onClick={() => this.props.clickOpenInfoWindow(place.id)}
                                 tabIndex="0"
                             >
-                            {place.venue.name}
+                            {place.name}
                             </li>
                         )}
                     </ul>
